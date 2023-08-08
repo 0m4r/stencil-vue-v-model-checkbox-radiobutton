@@ -1,12 +1,14 @@
 {
-  "name": "root",
+  "name": "stencil-playground",
+  "version": "0.0.1",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
-    "@types/node": "^20.2.5",
-    "lerna": "^7.0.0",
-    "typescript": "^5.0.4"
+    "@types/node": "^20.4.8",
+    "lerna": "^7.1.4",
+    "typescript": "^5.1.6",
+    "vue": "^3.3.4"
   }
 }

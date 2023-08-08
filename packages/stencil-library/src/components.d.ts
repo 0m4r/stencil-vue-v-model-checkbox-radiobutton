@@ -5,57 +5,184 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { CheckboxChangeEventDetail } from "./components/my-checkbox/my-checkbox";
+import { InputChangeEventDetail } from "./components/my-input/my-input";
+import { RadioChangeEventDetail } from "./components/my-radio/my-radio";
+import { InputChangeEventDetail as InputChangeEventDetail1 } from "./components/my-select/my-select";
+export { CheckboxChangeEventDetail } from "./components/my-checkbox/my-checkbox";
+export { InputChangeEventDetail } from "./components/my-input/my-input";
+export { RadioChangeEventDetail } from "./components/my-radio/my-radio";
+export { InputChangeEventDetail as InputChangeEventDetail1 } from "./components/my-select/my-select";
 export namespace Components {
-    interface MyComponent {
+    interface MyCheckbox {
+        "checked"?: boolean;
+        "type"?: HTMLInputElement['type'];
+        "value"?: HTMLInputElement['value'];
+    }
+    interface MyInput {
         /**
-          * The first name
+          * The value of the input.
          */
-        "first": string;
+        "type"?: HTMLInputElement['type'];
         /**
-          * The last name
+          * The value of the input.
          */
-        "last": string;
+        "value"?: HTMLInputElement['value'];
+    }
+    interface MyRadio {
+        "checked"?: boolean;
+        "name"?: HTMLInputElement['name'];
+        "type"?: HTMLInputElement['type'];
+        "value"?: HTMLInputElement['value'];
+    }
+    interface MySelect {
         /**
-          * The middle name
+          * The mode determines which platform styles to use.
          */
-        "middle": string;
+        "mode"?: "ios" | "md";
+        /**
+          * The value of the input.
+         */
+        "type"?: HTMLSelectElement['type'];
+        /**
+          * The value of the input.
+         */
+        "value"?: HTMLSelectElement['value'];
     }
 }
+export interface MyCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyCheckboxElement;
+}
+export interface MyInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyInputElement;
+}
+export interface MyRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyRadioElement;
+}
+export interface MySelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMySelectElement;
+}
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLMyCheckboxElement extends Components.MyCheckbox, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLMyCheckboxElement: {
+        prototype: HTMLMyCheckboxElement;
+        new (): HTMLMyCheckboxElement;
+    };
+    interface HTMLMyInputElement extends Components.MyInput, HTMLStencilElement {
+    }
+    var HTMLMyInputElement: {
+        prototype: HTMLMyInputElement;
+        new (): HTMLMyInputElement;
+    };
+    interface HTMLMyRadioElement extends Components.MyRadio, HTMLStencilElement {
+    }
+    var HTMLMyRadioElement: {
+        prototype: HTMLMyRadioElement;
+        new (): HTMLMyRadioElement;
+    };
+    interface HTMLMySelectElement extends Components.MySelect, HTMLStencilElement {
+    }
+    var HTMLMySelectElement: {
+        prototype: HTMLMySelectElement;
+        new (): HTMLMySelectElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "my-checkbox": HTMLMyCheckboxElement;
+        "my-input": HTMLMyInputElement;
+        "my-radio": HTMLMyRadioElement;
+        "my-select": HTMLMySelectElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface MyCheckbox {
+        "checked"?: boolean;
+        "onMyChange"?: (event: MyCheckboxCustomEvent<CheckboxChangeEventDetail>) => void;
+        "type"?: HTMLInputElement['type'];
+        "value"?: HTMLInputElement['value'];
+    }
+    interface MyInput {
         /**
-          * The first name
+          * Emitted when the input loses focus.
          */
-        "first"?: string;
+        "onMyBlur"?: (event: MyInputCustomEvent<void>) => void;
         /**
-          * The last name
+          * Emitted when the value has changed.
          */
-        "last"?: string;
+        "onMyChange"?: (event: MyInputCustomEvent<InputChangeEventDetail>) => void;
         /**
-          * The middle name
+          * Emitted when the input has focus.
          */
-        "middle"?: string;
+        "onMyFocus"?: (event: MyInputCustomEvent<void>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onMyInput"?: (event: MyInputCustomEvent<KeyboardEvent>) => void;
+        /**
+          * The value of the input.
+         */
+        "type"?: HTMLInputElement['type'];
+        /**
+          * The value of the input.
+         */
+        "value"?: HTMLInputElement['value'];
+    }
+    interface MyRadio {
+        "checked"?: boolean;
+        "name"?: HTMLInputElement['name'];
+        "onMyChange"?: (event: MyRadioCustomEvent<RadioChangeEventDetail>) => void;
+        "type"?: HTMLInputElement['type'];
+        "value"?: HTMLInputElement['value'];
+    }
+    interface MySelect {
+        /**
+          * The mode determines which platform styles to use.
+         */
+        "mode"?: "ios" | "md";
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onMyBlur"?: (event: MySelectCustomEvent<void>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onMyChange"?: (event: MySelectCustomEvent<InputChangeEventDetail1>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onMyFocus"?: (event: MySelectCustomEvent<void>) => void;
+        /**
+          * Emitted when a keyboard input occurred.
+         */
+        "onMyInput"?: (event: MySelectCustomEvent<KeyboardEvent>) => void;
+        /**
+          * The value of the input.
+         */
+        "type"?: HTMLSelectElement['type'];
+        /**
+          * The value of the input.
+         */
+        "value"?: HTMLSelectElement['value'];
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "my-checkbox": MyCheckbox;
+        "my-input": MyInput;
+        "my-radio": MyRadio;
+        "my-select": MySelect;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-checkbox": LocalJSX.MyCheckbox & JSXBase.HTMLAttributes<HTMLMyCheckboxElement>;
+            "my-input": LocalJSX.MyInput & JSXBase.HTMLAttributes<HTMLMyInputElement>;
+            "my-radio": LocalJSX.MyRadio & JSXBase.HTMLAttributes<HTMLMyRadioElement>;
+            "my-select": LocalJSX.MySelect & JSXBase.HTMLAttributes<HTMLMySelectElement>;
         }
     }
 }
